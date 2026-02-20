@@ -13,7 +13,47 @@ def extract_skills(text):
         messages=[
             {
                 "role": "user",
-                "content": "Here is the text of a PDF resume, extract the skills and experience from it and format it nicely into a json: "
+                "content": """Extract information from this resume and structure it as JSON with the following format:
+{
+  "name": "",
+  "tags": [],
+  "experience": [
+    {
+      "title": "",
+      "company": "",
+      "dates": "",
+      "responsibilities": []
+    }
+  ],
+  "skills": [],
+  "education": [
+    {
+      "degree": "",
+      "university": "",
+      "graduation_date": ""
+    }
+  ],
+  "languages": [
+    {
+      "language": "",
+      "proficiency": ""
+    }
+  ],
+  "references": [
+    {
+      "name": "",
+      "title": "",
+      "company": "",
+      "contact": "",
+      "email": ""
+    }
+  ]
+}
+
+For the "tags" field, extract key words and phrases that represent important skills, job titles, industries, or areas of expertise mentioned in the resume.
+
+Resume text:
+"""
                 + text,
             },
         ],
