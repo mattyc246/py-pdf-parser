@@ -1,17 +1,35 @@
-# Python Hello World
+# CSV Resume Parser
 
-A minimal Python script in the current directory.
+This script reads a CSV of candidate resume URLs, downloads each PDF, extracts text, and appends screening columns for hospitality, retail, role matches, and relevant experience years.
 
 ## Run
 
-```
+```bash
 python3 main.py
 ```
 
-## Notes
+Process only the first 10 rows:
 
-- Prefer pyenv (installed on this machine) instead of venv. Example setup:
-  - `pyenv install 3.11.7` (if not already installed)
-  - `pyenv local 3.11.7` (sets version for this folder)
-  - `python -m pip install --upgrade pip` (optional)
-- No additional dependencies needed yet. Add tools later as desired (e.g., pytest, ruff, mypy).
+```bash
+python3 main.py --limit 10
+```
+
+Use a custom input or output path:
+
+```bash
+python3 main.py --input /path/to/source.csv --output /path/to/enriched.csv
+```
+
+## Output Columns
+
+The script preserves the original CSV columns and appends:
+
+- `has_fnb_experience`
+- `has_retail_experience`
+- `relevant_experience_years`
+- `has_waiter_or_service_role`
+- `has_baker_or_cake_decorator_role`
+- `has_retail_supervisor_role`
+- `has_sales_assistant_role`
+
+Rows without a resume URL, failed downloads, unreadable PDFs, or empty resume text receive `-` in all appended columns.
